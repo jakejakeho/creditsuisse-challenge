@@ -1,4 +1,5 @@
 # creditsuisse-challenge
-1. npm install
-2. npm install -g nodemon
-3. nodemon
+Steps to run:
+`npm install
+npm install -g nodemon
+nodemon`
