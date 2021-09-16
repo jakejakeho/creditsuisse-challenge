@@ -2,8 +2,10 @@ const Moment = require('moment');
 const MomentRange = require('moment-range');
 
 const moment = MomentRange.extendMoment(Moment);
+// Read json from testcase.json
 const json = require('./testcase.json');
 
+// Load settings
 let rateType = 'Standard';
 const standardRates = [{
     rateName: 'Day',
@@ -14,7 +16,6 @@ const standardRates = [{
     rateType,
     rate: json.roboRate.standardNight,
 }];
-
 
 rateType = 'Extra';
 const extraRates = [{
@@ -27,11 +28,13 @@ const extraRates = [{
     rate: json.roboRate.extraNight,
 }];
 
+// init
 const shiftStart = moment(json.shift.start);
 const shiftEnd = moment(json.shift.end);
 let currentWorkTime = shiftStart;
 let totalSalary = 0;
 let nextRestTime = moment(currentWorkTime).add(8, 'hour');
+// loop untill shift end
 while (currentWorkTime.diff(shiftEnd) < 0) {
     let currentWeekday = currentWorkTime.weekday();
     // use different rates based on weekdays / weekends
